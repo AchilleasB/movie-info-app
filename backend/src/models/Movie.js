@@ -1,13 +1,16 @@
 class Movie {
-    constructor(id, title, year, runtime, genres, director, actors, plot) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.runtime = runtime;
-        this.genres = genres;
-        this.director = director;
-        this.actors = actors;
-        this.plot = plot;
+    constructor({ Title, Year, imdbID, Poster, Genre, Director, Actors, Plot, Runtime, Released, imdbRating }) {
+        this.title = Title;
+        this.year = Year;
+        this.imdbID = imdbID;
+        this.poster = Poster;
+        this.genre = Genre;
+        this.director = Director;
+        this.actors = Actors;
+        this.plot = Plot;
+        this.runtime = Runtime;
+        this.released = Released;
+        this.imdbRating = imdbRating;
     }
 }
 
