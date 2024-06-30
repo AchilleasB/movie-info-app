@@ -1,7 +1,8 @@
 class Movie {
-    constructor({ Title, Year, imdbID, Poster, Genre, Director, Actors, Plot, Runtime, Released, imdbRating }) {
+    constructor({ Title, Year, Type, imdbID, Poster, Genre, Director, Actors, Plot, Runtime, Released, imdbRating }) {
         this.title = Title;
         this.year = Year;
+        this.type = Type;
         this.imdbID = imdbID;
         this.poster = Poster;
         this.genre = Genre;

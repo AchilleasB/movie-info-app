@@ -1,4 +1,5 @@
 const MovieService = require('../services/MovieService');
+const { NotFoundError, BadRequestError } = require('../errors');
 
 class MovieController {
     constructor() {
@@ -7,11 +8,15 @@ class MovieController {
 
     async search(req, res) {
         try {
-            const { title, year } = req.query; // Express.js automatically parses query parameters with the .query property
-            const movies = await this.movieService.searchMovies(title, year);
+            const { title, year, type, actor, director} = req.query; // Express.js automatically parses query parameters with the .query property
+            const movies = await this.movieService.searchMovies(title, year, type, actor, director);
             res.json(movies);
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            if ( error instanceof NotFoundError || error instanceof BadRequestError) {
+                res.status(error.statusCode).json({ error: error.message });
+            } else {
+                res.status(500).json({ error: 'Internal Server Error' });
+            }
         }
     }
 }

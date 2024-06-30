@@ -10,7 +10,7 @@ class MovieRepository {
     }
 
     // OMDB API handles the search by title and returns a list of movies
-    async fetchByTitle(title, year = null) {
+    async fetchByTitle(title) {
         try {
             let url = `${this.apiUrl}&s=${encodeURIComponent(title)}`;
             
@@ -22,10 +22,6 @@ class MovieRepository {
 
             const moviesDetails = response.data.Search.map(movieData => this.fetchMovieDetails(movieData.imdbID));
             const movies = await Promise.all(moviesDetails);
-
-            if (year) {
-                return movies.filter(movie => movie.year === year);
-            }
 
             return movies;
         } catch (error) {
