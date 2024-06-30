@@ -73,7 +73,6 @@ export default {
         this.year = '';
         this.actor = '';
         this.director = '';
-        this.searchMovies();
       }, 3000);
     }
   },
